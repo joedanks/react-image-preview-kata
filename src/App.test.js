@@ -13,7 +13,8 @@ test('renders without crashing', () => {
 
 test('renders file input', () => {
   const component = shallow(<App/>);
+  const fileInput = component.find('input');
   
-  expect(component.find('input')).toHaveLength(1);
+  expect(fileInput).toHaveLength(1);
 })
  
