@@ -16,5 +16,6 @@ test('renders file input', () => {
   const fileInput = component.find('input');
   
   expect(fileInput).toHaveLength(1);
+  expect(fileInput.props().type).toEqual('file');
 })
  
