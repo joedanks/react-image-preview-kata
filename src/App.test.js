@@ -10,4 +10,10 @@ test('renders without crashing', () => {
   
   expect(component.props().className).toEqual('App'); 
 });
+
+test('renders file input', () => {
+  const component = shallow(<App/>);
+  
+  expect(component.find('input')).toHaveLength(1);
+})
  
