@@ -13,6 +13,7 @@ class App extends Component {
           To get started, edit <code>src/App.test.js</code> in TDD fashion.
         </p>
         <input type='file' accept='image/png, image/jpeg'/>
+        <div className='preview'/>
       </div>
     );
   }
