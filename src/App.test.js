@@ -14,9 +14,10 @@ test('renders without crashing', () => {
 test('renders file input', () => {
   const component = shallow(<App/>);
   const fileInput = component.find('input');
+  const inputProps = fileInput.props();
   
   expect(fileInput).toHaveLength(1);
-  expect(fileInput.props().type).toEqual('file');
-  expect(fileInput.props().accept).toEqual(expect.stringContaining('image/png'));
+  expect(inputProps.type).toEqual('file');
+  expect(inputProps.accept).toEqual(expect.stringContaining('image/png'));
 })
  
