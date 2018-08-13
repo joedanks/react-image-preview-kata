@@ -24,7 +24,8 @@ test('renders file input', () => {
 
 test('renders image preview', () => {
   const component = shallow(<App/>);
+  const previewDiv = component.find('div.preview');
 
-  expect(component.find('div.preview')).toHaveLength(1);
+  expect(previewDiv).toHaveLength(1);
 });
  
