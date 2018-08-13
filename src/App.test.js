@@ -19,5 +19,6 @@ test('renders file input', () => {
   expect(fileInput).toHaveLength(1);
   expect(inputProps.type).toEqual('file');
   expect(inputProps.accept).toEqual(expect.stringContaining('image/png'));
+  expect(inputProps.accept).toEqual(expect.stringContaining('image/jpeg'));
 })
  
