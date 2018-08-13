@@ -28,4 +28,11 @@ test('renders image preview', () => {
 
   expect(previewDiv).toHaveLength(1);
 });
+
+test('file input updates preview', () => {
+  const component = shallow(<App/>);
+  const fileInput = component.find('input');
+
+  expect(fileInput.props().onChange).toEqual(expect.any(Function));
+})
  
