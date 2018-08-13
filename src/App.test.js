@@ -20,5 +20,11 @@ test('renders file input', () => {
   expect(inputProps.type).toEqual('file');
   expect(inputProps.accept).toEqual(expect.stringContaining('image/png'));
   expect(inputProps.accept).toEqual(expect.stringContaining('image/jpeg'));
-})
+});
+
+test('renders image preview', () => {
+  const component = shallow(<App/>);
+
+  expect(component.find('div.preview')).toHaveLength(1);
+});
  
