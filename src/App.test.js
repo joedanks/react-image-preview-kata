@@ -52,7 +52,7 @@ test('file input updates preview', () => {
       result: 'result'
     }
   };
-
+  
   fakeReader.readAsDataURL = () => {
     fakeReader.onload(givenReadEvent);
   }

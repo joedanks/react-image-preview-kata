@@ -11,7 +11,6 @@ class App extends Component {
     this.readFile = this.readFile.bind(this);
   }
   updatePreview(e) {
-    console.log(e);
     this.setState({
       data: e.target.result
     });
