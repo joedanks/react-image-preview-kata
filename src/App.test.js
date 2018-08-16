@@ -5,6 +5,13 @@ import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({adapter: new Adapter()});
 
+const fakeReader = {};
+
+beforeEach(() => {
+  fakeReader.readAsDataURL = () => {};
+  window.FileReader = FakeFileReader;
+})
+
 test('renders without crashing', () => {
   const component = shallow(<App/>);
   
@@ -32,18 +39,33 @@ test('renders image preview', () => {
 test('file input updates preview', () => {
   const component = shallow(<App/>);
   const fileInput = component.find('input');
-  const previewImg = component.find('img.preview');
+  const fakeFile = 'fakeFile';
   const givenEvent = {
     target: {
       files: [
-        new File(["foo"], "foo.jpeg", {type: "image/jpeg"})
+        fakeFile
       ]
     }
   };
+  const givenReadEvent = {
+    target: {
+      result: 'result'
+    }
+  };
+
+  fakeReader.readAsDataURL = () => {
+    fakeReader.onload(givenReadEvent);
+  }
 
   fileInput.simulate('change', givenEvent);
-
+  
   expect(fileInput.props().onChange).toEqual(expect.any(Function));
-  expect(previewImg.text()).toEqual("foo");
+  const previewImg = component.find('img.preview');
+  expect(previewImg.props().src).toEqual("result");
 })
- 
+
+class FakeFileReader {
+  constructor() {
+    return fakeReader;
+  }
+}
