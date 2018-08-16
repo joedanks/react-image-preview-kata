@@ -32,7 +32,18 @@ test('renders image preview', () => {
 test('file input updates preview', () => {
   const component = shallow(<App/>);
   const fileInput = component.find('input');
+  const previewDiv = component.find('div.preview');
+  const givenEvent = {
+    target: {
+      files: [
+        new File(["foo"], "foo.jpeg", {type: "image/jpeg"})
+      ]
+    }
+  };
+
+  fileInput.simulate('change', givenEvent);
 
   expect(fileInput.props().onChange).toEqual(expect.any(Function));
+  expect(previewDiv.text()).toEqual("foo");
 })
  
