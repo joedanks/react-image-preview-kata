@@ -26,6 +26,7 @@ test('renders image preview', () => {
   const previewImg = component.find('img.preview');
 
   expect(previewImg).toHaveLength(1);
+  expect(previewImg.props()).toHaveProperty('src');
 });
 
 test('file input updates preview', () => {
