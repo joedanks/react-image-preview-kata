@@ -24,15 +24,15 @@ test('renders file input', () => {
 
 test('renders image preview', () => {
   const component = shallow(<App/>);
-  const previewDiv = component.find('div.preview');
+  const previewImg = component.find('img.preview');
 
-  expect(previewDiv).toHaveLength(1);
+  expect(previewImg).toHaveLength(1);
 });
 
 test('file input updates preview', () => {
   const component = shallow(<App/>);
   const fileInput = component.find('input');
-  const previewDiv = component.find('div.preview');
+  const previewImg = component.find('img.preview');
   const givenEvent = {
     target: {
       files: [
@@ -44,6 +44,6 @@ test('file input updates preview', () => {
   fileInput.simulate('change', givenEvent);
 
   expect(fileInput.props().onChange).toEqual(expect.any(Function));
-  expect(previewDiv.text()).toEqual("foo");
+  expect(previewImg.text()).toEqual("foo");
 })
  
